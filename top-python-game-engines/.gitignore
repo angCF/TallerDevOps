@@ -1,8 +1,0 @@
-.directory
-
-# Ren'Py files
-*.save
-navigation.json
-persistent
-*.rpy?
-*.rpy??
