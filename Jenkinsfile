@@ -1,13 +1,9 @@
-<<<<<<< HEAD:Jenkinsfile
-=======
-
-
->>>>>>> origin/main:rp-portfolio/Jenkinsfile
 pipeline {
     agent any 
     stages {
         stage('Build') { 
             steps {
+                git 'https://github.com/angCF/taller-devops.git'
                 sh 'pip install pylint' 
                 sh 'pylint *.py' 
             }
@@ -21,9 +17,5 @@ pipeline {
             }
         }
     }
-<<<<<<< HEAD:Jenkinsfile
+  }
 }
-=======
-}
-
->>>>>>> origin/main:rp-portfolio/Jenkinsfile
