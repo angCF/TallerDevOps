@@ -5,8 +5,15 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                sh 'python -m py_compile sources/add2vals.py sources/manage.py' 
-                stash(name: 'compiled-results', includes: 'sources/*.py*') 
+                sh 'pip install pylint' 
+                sh 'pylint *.py' 
+            }
+        }
+        stage('Deploy') { 
+            steps {
+                sh 'cp . /deploy' 
+                sh 'source venv/bin/activate' 
+                sh 'python3 manage.py runserver' 
             }
         }
     }
