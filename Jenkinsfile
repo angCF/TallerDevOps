@@ -6,6 +6,13 @@ pipeline {
                 echo 'Hello World'
             }
         }
+        stage('Installing packages') {
+            steps {
+                script {
+                    sh 'pip -r requirements.txt'
+                }
+            }
+        }
         stage('Static Code Checking') {
             steps {
                 script {
