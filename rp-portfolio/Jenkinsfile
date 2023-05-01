@@ -12,6 +12,7 @@ pipeline {
         stage('Deploy') { 
             steps {
                 sh 'cp . /deploy' 
+                sh 'python manage.py migrate'
                 sh 'source venv/bin/activate' 
                 sh 'python3 manage.py runserver' 
             }
