@@ -14,7 +14,7 @@ pipeline {
         }
         stage('deploy') { 
             steps {
-                sh 'cp -r . /deploy' 
+                sh 'sudo cp -r . /deploy' 
                 // sh 'python manage.py migrate'
                 sh 'source venv/bin/activate' 
                 sh 'python3 manage.py runserver' 
