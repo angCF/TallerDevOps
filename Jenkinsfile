@@ -14,7 +14,7 @@ pipeline {
         }
         stage('deploy') { 
             steps {
-                sh 'cp -r ../taller-devops /deploy' 
+                sh 'cp -r ./hello.py /deploy' 
                 // sh 'source venv/bin/activate' 
                 // sh 'python3 manage.py runserver' 
             }
