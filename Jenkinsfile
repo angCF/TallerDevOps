@@ -1,12 +1,26 @@
 pipeline {
     agent any 
+    environment {
+        VIRTUAL_ENV = "${env.WORKSPACE}/venv"
+    }
     stages {
         stage('build') { 
-            steps {
-                sh 'apk update'
-                sh 'apk install pylint-django'
+            /* steps {
                 sh 'pylint --disable=W1202 --output-format=parseable --reports=no module > pylint.log || echo "pylint exited with $?"'
                 sh 'cat render/pylint.log'
+            }*/ 
+            steps {
+                sh """
+                    echo ${SHELL}
+                    [ -d venv ] && rm -rf venv
+                    #virtualenv --python=python2.7 venv
+                    virtualenv venv
+                    #. venv/bin/activate
+                    export PATH=${VIRTUAL_ENV}/bin:${PATH}
+                    pip install --upgrade pip
+                    pip install -r requirements.txt
+                    make clean
+                """
             }
         }
         stage('deploy') { 
