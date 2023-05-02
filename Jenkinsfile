@@ -7,8 +7,10 @@ pipeline {
             }
         }*/
         stage('clone repository) {
-          git branch: "main",
-              url: 'git@github.com:angCF/taller-devops.git'
+            steps {
+                git branch: "main",
+                    url: 'git@github.com:angCF/taller-devops.git'
+            }
         }
         stage('build') { 
             steps {
