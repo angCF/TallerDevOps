@@ -1,6 +1,11 @@
 pipeline {
     agent any 
     stages {
+        stage('Instalar Pylint') {
+            steps {
+                sh 'pip install pylint'
+            }
+        }
         stage('build') { 
             steps {
                 sh 'pylint --disable=W1202 --output-format=parseable --reports=no module > pylint.log || echo "pylint exited with $?"'
