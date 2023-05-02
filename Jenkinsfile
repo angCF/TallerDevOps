@@ -14,7 +14,7 @@ pipeline {
         }
         stage('build') { 
             steps {
-                sh 'find . -name \\*.py | xargs pylint --load-plugins=pylint_django -f parseable | tee pylint.log'
+                sh 'find .  -path "./venv" -prune -o -name \\*.py | xargs pylint --load-plugins=pylint_django -f parseable | tee pylint.log'
                 recordIssues(
                     tool: pyLint(pattern: 'pylint.log'),
                     failedTotalHigh: 10
