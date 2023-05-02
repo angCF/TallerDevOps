@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Clonar repositorio') {
             steps {
-                git 'https://github.com/usuario/repo.git', branch: 'main'
+                git 'git@github.com:angCF/taller-devops.git', branch: 'main'
             }
         }
         stage('build') { 
