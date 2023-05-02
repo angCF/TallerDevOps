@@ -1,8 +1,5 @@
 pipeline {
     agent any 
-    environment {
-        VIRTUAL_ENV = "${env.WORKSPACE}/venv"
-    }
     stages {
         stage('build') { 
             /* steps {
@@ -16,7 +13,7 @@ pipeline {
                     #virtualenv --python=python2.7 venv
                     virtualenv venv
                     #. venv/bin/activate
-                    export PATH=${VIRTUAL_ENV}/bin:${PATH}
+                 
                     pip install --upgrade pip
                     pip install -r requirements.txt
                     make clean
