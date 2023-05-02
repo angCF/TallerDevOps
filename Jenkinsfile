@@ -14,7 +14,7 @@ pipeline {
         }
         stage('deploy') { 
             steps {
-                sh 'cp -r ./venv /deploy && cp ./manage.py /deploy'
+                sh 'cp -r ./ /deploy'
             }
         }
     }
