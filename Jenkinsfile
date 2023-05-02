@@ -11,6 +11,7 @@ pipeline {
                     if [ ! -d venv ] ; then
                         virtualenv --python=python2.7 venv
                     fi
+                    echo "PWD: ${PWD}"
                     source venv/bin/activate
                     echo "PWD: ${PWD}"
 
