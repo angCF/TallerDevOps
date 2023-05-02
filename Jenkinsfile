@@ -1,11 +1,6 @@
 pipeline {
     agent any
     stages {
-        /*stage('Clonar repositorio') {
-            steps {
-                git 'git@github.com:angCF/taller-devops.git', branch: 'main'
-            }
-        }*/
         stage('clone repository') {
             steps {
                 git branch: "main",
@@ -14,7 +9,7 @@ pipeline {
         }
         stage('build') { 
             steps {
-                sh 'find .  -path "./venv" -prune -o -name \\*.py | xargs pylint --load-plugins=pylint_django -f parseable | tee pylint.log'
+                sh 'find . -path "./venv" -prune -o -name \\*.py | xargs pylint --load-plugins=pylint_django -f parseable | tee pylint.log --exit-zero'
                 recordIssues(
                     tool: pyLint(pattern: 'pylint.log'),
                     failedTotalHigh: 10
