@@ -1,7 +1,7 @@
 pipeline {
     agent any
-    /*stages {
-        stage('Instalar Pip') {
+    stages {
+        /*stage('Instalar Pip') {
             steps {
                 sh 'apt-get update && apt-get install -y python3-pip'
             }
