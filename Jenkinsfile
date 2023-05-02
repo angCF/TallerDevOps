@@ -1,5 +1,9 @@
 pipeline {
-    agent any 
+    agent {
+        docker {
+            args '-u root' // Agregar este argumento para cambiar al usuario root
+        }
+    }
     stages {
          stage('Instalar Pip') {
             steps {
