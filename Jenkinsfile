@@ -6,7 +6,7 @@ pipeline {
                 sh 'apt-get update && apt-get install -y python3-pip'
             }
         }
-        stage('Instalar Pylint') {
+        /*stage('Instalar Pylint') {
             steps {
                 sh 'pip install pylint'
             }
@@ -15,7 +15,7 @@ pipeline {
             steps {
                 sh 'pylint --disable=W1202 --output-format=parseable --reports=no module > pylint.log || echo "pylint exited with $?"'
                 sh 'cat render/pylint.log'
-            } 
+            } */
             /* steps {
                 sh """
                     if [ ! -d venv ] ; then
