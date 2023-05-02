@@ -3,13 +3,13 @@ pipeline {
     stages {
         stage('Instalar Pylint') {
             steps {
-                sh 'pylint --version'
+                sh 'pylint --disable=missing-module-docstring hello.py'
             }
         }
         stage('build') { 
             steps {
-                sh 'pylint --disable=W1202 --output-format=parseable --reports=no module > pylint.log || echo "pylint exited with $?"'
-                // sh 'cat render/pylint.log'
+                sh 'pylint --disable=missing-module-docstring > pylint.log || echo "pylint exited with $?"'
+                sh 'cat render/pylint.log'
             } 
         }
         stage('deploy') { 
