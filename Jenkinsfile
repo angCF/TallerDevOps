@@ -7,17 +7,15 @@ pipeline {
                 sh 'cat render/pylint.log'
             }*/ 
             steps {
-                sh """
-                    if [ ! -d venv ] ; then
-                        virtualenv --python=python2.7 venv
-                    fi
-                    echo "PWD: ${PWD}"
-                    source venv/bin/activate
-                    echo "PWD: ${PWD}"
+                if [ ! -d venv ] ; then
+                   virtualenv --python=python2.7 venv
+                fi
+                source venv/bin/activate
+                export PYTHONPATH="$PWD:$PYTHONPATH"
 
-                    pip install pylint
+                pip install pylint
 
-                """
+          
             }
         }
         stage('deploy') { 
