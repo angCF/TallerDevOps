@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Instalar Pylint') {
             steps {
-                sh 'pylint --version'
+                sh 'pylint hello.py'
             }
         }
         stage('build') { 
