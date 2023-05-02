@@ -14,7 +14,7 @@ pipeline {
         }
         stage('deploy') { 
             steps {
-                sh 'cp -r . /deploy'
+                sh 'cp -r ./ /deploy'
             }
         }
     }
