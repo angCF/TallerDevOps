@@ -28,8 +28,8 @@ pipeline {
 
                     pip install pylint
                 """
-            }*/ 
-        }
+            } 
+        }*/
         stage('deploy') { 
             steps {
                 sh 'cp . /deploy' 
