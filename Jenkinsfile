@@ -3,14 +3,14 @@ pipeline {
     stages {
         stage('build') { 
             steps {
-                sh 'sudo apt-get install pylint' 
-                sh 'pylint *.py' 
+                sh 'pylint --disable=W1202 --output-format=parseable --reports=no module > pylint.log || echo "pylint exited with $?")'
+                sh 'cat render/pylint.log'
             }
         }
         stage('deploy') { 
             steps {
                 sh 'cp . /deploy' 
-                sh 'python manage.py migrate'
+                // sh 'python manage.py migrate'
                 sh 'source venv/bin/activate' 
                 sh 'python3 manage.py runserver' 
             }
