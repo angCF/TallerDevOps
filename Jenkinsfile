@@ -6,12 +6,17 @@ pipeline {
                 git 'git@github.com:angCF/taller-devops.git', branch: 'main'
             }
         }*/
+        stage('clone repository) {
+          git branch: "main",
+              url: 'git@github.com:angCF/taller-devops.git'
+        }
         stage('build') { 
             steps {
-                sh 'pylint --disable=missing-module-docstring /var/jenkins_home/workspace/app-python/blog'
-                sh 'pylint --disable=missing-module-docstring /var/jenkins_home/workspace/app-python/personal_portfolio'
-                sh 'pylint --disable=missing-module-docstring /var/jenkins_home/workspace/app-python/projects'
-                sh 'pylint --disable=missing-module-docstring manage.py'
+                sh 'find . -name \\*.py | xargs pylint --load-plugins=pylint_django -f parseable | tee pylint.log'
+                recordIssues(
+                    tool: pyLint(pattern: 'pylint.log'),
+                    failTotalHigh: 10,
+                )
             } 
         }
         stage('deploy') { 
