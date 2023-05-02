@@ -1,14 +1,9 @@
 pipeline {
     agent any
     stages {
-        stage('Instalar Pylint') {
-            steps {
-                sh 'pylint --disable=missing-module-docstring hello.py'
-            }
-        }
         stage('build') { 
             steps {
-                sh 'pylint --disable=missing-module-docstring manage.py'
+                sh 'pylint --disable=missing-module-docstring .'
             } 
         }
         stage('deploy') { 
