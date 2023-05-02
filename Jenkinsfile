@@ -1,13 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('clone repository') {
-            steps {
-                git branch: "main",
-                    url: 'git@github.com:angCF/taller-devops.git'
-            }
-        }
-        stage('build') { 
+        stage('pylit') { 
             steps {
                 sh 'find . -path "./venv" -prune -o -name \\*.py | xargs pylint --ignore=venv --load-plugins=pylint_django --exit-zero -f parseable | tee pylint.log'
                 recordIssues(
@@ -15,6 +9,12 @@ pipeline {
                     failedTotalHigh: 10
                 )
             } 
+        }
+        state('build') {
+            steps {
+                sh 'source venv/bin/activate'
+                sh 'python3 manage.py runserser'
+            }
         }
         stage('deploy') { 
             steps {
