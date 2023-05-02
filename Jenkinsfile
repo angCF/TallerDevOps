@@ -10,7 +10,7 @@ pipeline {
                 )
             } 
         }
-        state('build') {
+        stage('build') {
             steps {
                 sh 'source venv/bin/activate'
                 sh 'python3 manage.py runserser'
