@@ -10,12 +10,12 @@ pipeline {
                 )
             } 
         }
-        stage('build') {
+        /* stage('build') {
             steps {
                 sh 'source venv/bin/activate'
                 sh 'python3 manage.py runserser'
             }
-        }
+        } */
         stage('deploy') { 
             steps {
                 sh 'cp -r ./ /deploy'
