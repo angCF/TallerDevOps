@@ -1,34 +1,18 @@
 pipeline {
-    agent any
+    agent any 
     stages {
-        stage('hello') {
+        stage('build') { 
             steps {
-                echo 'Hello World'
+                sh 'sudo apt install pylint' 
+                sh 'pylint *.py' 
             }
         }
-        stage('Installing packages') {
+        stage('deploy') { 
             steps {
-                script {
-                    sh 'pip -r requirements.txt'
-                }
-            }
-        }
-        stage('Static Code Checking') {
-            steps {
-                script {
-                    sh 'find . -name \\*.py | xargs pylint --load-plugins=pylint_django -f parseable | tee pylint.log'
-                    recordIssues(
-                        tool: pyLint(pattern: 'pylint.log'),
-                        failTotalHigh: 10,
-                    )
-                }
-            }
-        }
-        stage('deploy') {
-            steps {
-                sh 'python manage.py migrate'
                 sh 'cp . /deploy' 
-                sh 'python3 manage.py runserver /deploy'
+                sh 'python manage.py migrate'
+                sh 'source venv/bin/activate' 
+                sh 'python3 manage.py runserver' 
             }
         }
     }
