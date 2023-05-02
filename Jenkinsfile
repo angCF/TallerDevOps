@@ -2,23 +2,23 @@ pipeline {
     agent any 
     stages {
         stage('build') { 
-            /* steps {
+            steps {
                 sh 'pylint --disable=W1202 --output-format=parseable --reports=no module > pylint.log || echo "pylint exited with $?"'
                 sh 'cat render/pylint.log'
+            } 
+            /* steps {
+                sh """
+                    if [ ! -d venv ] ; then
+                       virtualenv --python=python2.7 venv
+                    fi
+                    echo "PWD: ${PWD}"
+                    source venv/bin/activate
+
+                    // export PYTHONPATH="$PWD:$PYTHONPATH"
+
+                    pip install pylint
+                """
             }*/ 
-            steps {
-                if [ ! -d venv ] ; then
-                   virtualenv --python=python2.7 venv
-                fi
-                echo "PWD: ${PWD}"
-                source venv/bin/activate
-                
-                // export PYTHONPATH="$PWD:$PYTHONPATH"
-
-                pip install pylint
-
-          
-            }
         }
         stage('deploy') { 
             steps {
