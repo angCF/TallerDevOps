@@ -14,7 +14,7 @@ pipeline {
                         virtualenv --python=python2.7 venv
                     fi
                         source venv/bin/activate
-                        export PYTHONPATH="$PWD:$PYTHONPATH"
+                        echo "PWD: ${PWD}"
 
                         pip install pylint
 
