@@ -8,7 +8,8 @@ pipeline {
         }*/
         stage('build') { 
             steps {
-                sh 'pylint --disable=missing-module-docstring ./'
+                sh '$WORKSPACE'
+                sh 'pylint --disable=missing-module-docstring '
             } 
         }
         stage('deploy') { 
