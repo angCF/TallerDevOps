@@ -9,7 +9,7 @@ pipeline {
         }
         stage('build') { 
             steps {
-                sh 'find . -path "venv" -prune -o -name \\*.py | xargs pylint --disable=missing-module-docstring --disable=missing-class-docstring --disable=missing-function-docstring --load-plugins=pylint_django -f parseable --exit-zero | tee pylint.log'
+                sh 'find . -path "./venv" -prune -o -name \\*.py | xargs pylint --disable=missing-module-docstring --disable=missing-class-docstring --disable=missing-function-docstring --load-plugins=pylint_django -f parseable --exit-zero | tee pylint.log'
                 recordIssues(
                     tool: pyLint(pattern: 'pylint.log'),
                     failedTotalHigh: 10
