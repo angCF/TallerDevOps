@@ -1,8 +1,6 @@
 pipeline {
     agent any 
-    environment {
-        VIRTUAL_ENV = "${env.WORKSPACE}/venv"
-    }
+
     stages {
         stage('build') { 
             /* steps {
