@@ -10,7 +10,7 @@ pipeline {
                 sh 'cat render/pylint.log'
             }*/ 
             steps {
-                echo $VIRTUAL_ENV
+                echo '${VIRTUAL_ENV}'
                 sh """
                     if [ ! -d venv ] ; then
                         virtualenv --python=python2.7 venv
