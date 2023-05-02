@@ -7,8 +7,6 @@ pipeline {
                 sh 'cat render/pylint.log'
             }*/ 
             steps {
-                echo binding.PYTHONPATH
-
                 sh """
                     if [ ! -d venv ] ; then
                         virtualenv --python=python2.7 venv
