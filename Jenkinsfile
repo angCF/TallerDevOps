@@ -1,6 +1,8 @@
 pipeline {
     agent any 
-
+    environment {
+        VIRTUAL_ENV = "${env.WORKSPACE}/venv"
+    }
     stages {
         stage('build') { 
             /* steps {
@@ -8,6 +10,7 @@ pipeline {
                 sh 'cat render/pylint.log'
             }*/ 
             steps {
+                sh echo '$VIRTUAL_ENV'
                 sh """
                     if [ ! -d venv ] ; then
                         virtualenv --python=python2.7 venv
