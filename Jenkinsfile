@@ -8,8 +8,7 @@ pipeline {
         }
         stage('build') { 
             steps {
-                sh 'pylint --disable=missing-module-docstring > pylint.log || echo "pylint exited with $?"'
-                sh 'cat render/pylint.log'
+                sh 'pylint --disable=missing-module-docstring manage.py'
             } 
         }
         stage('deploy') { 
