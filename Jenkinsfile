@@ -11,10 +11,10 @@ pipeline {
                     if [ ! -d venv ] ; then
                         virtualenv --python=python2.7 venv
                     fi
-                        source venv/bin/activate
-                        echo "PWD: ${PWD}"
+                    source venv/bin/activate
+                    echo "PWD: ${PWD}"
 
-                        pip install pylint
+                    pip install pylint
 
                 """
             }
