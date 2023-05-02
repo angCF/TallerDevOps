@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('build') { 
             steps {
-                sh 'sudo apt install pylint' 
+                sh 'apt install pylint' 
                 sh 'pylint *.py' 
             }
         }
