@@ -6,7 +6,7 @@ pipeline {
                 git 'git@github.com:angCF/taller-devops.git', branch: 'main'
             }
         }*/
-        stage('clone repository) {
+        stage('clone repository') {
             steps {
                 git branch: "main",
                     url: 'git@github.com:angCF/taller-devops.git'
