@@ -8,7 +8,6 @@ pipeline {
             }*/ 
             steps {
                 sh """
-                    echo ${SHELL}
                     [ -d venv ] && rm -rf venv
                     #virtualenv --python=python2.7 venv
                     virtualenv venv
