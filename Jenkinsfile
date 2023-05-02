@@ -8,7 +8,10 @@ pipeline {
         }*/
         stage('build') { 
             steps {
-                sh 'pylint --disable=missing-module-docstring /var/jenkins_home/workspace/app-python'
+                sh 'pylint --disable=missing-module-docstring /var/jenkins_home/workspace/app-python/blog'
+                sh 'pylint --disable=missing-module-docstring /var/jenkins_home/workspace/app-python/personal_portfolio'
+                sh 'pylint --disable=missing-module-docstring /var/jenkins_home/workspace/app-python/projects'
+                sh 'pylint --disable=missing-module-docstring manage.py'
             } 
         }
         stage('deploy') { 
