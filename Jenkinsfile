@@ -14,12 +14,9 @@ pipeline {
         }
         stage('deploy') { 
             steps {
-                sh 'whoami'
-                sh 'chmod 766 /.'
-                sh 'cp -r . /deploy' 
-                // sh 'python manage.py migrate'
-                sh 'source venv/bin/activate' 
-                sh 'python3 manage.py runserver' 
+                sh 'cp -r ../taller-devops /deploy' 
+                // sh 'source venv/bin/activate' 
+                // sh 'python3 manage.py runserver' 
             }
         }
     }
