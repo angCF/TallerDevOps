@@ -1,0 +1,2 @@
+ALLOWED_HOSTS = ['*']
+PORT = 8000
